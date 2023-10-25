@@ -10,7 +10,7 @@ router.post("/new-message", async (req, res) => {
     // store message
     const newMessage = new Message(req.body);
     const savedMessage = await newMessage.save();
-
+    // if(!newMessage
     // update last message of chat
     await Chat.findOneAndUpdate(
       { _id: req.body.chat },

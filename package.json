@@ -1,7 +1,6 @@
 {
-  "name": "sheychat",
+  "name": "buzzTalk",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "engines": {
     "node": "15.7.0",
@@ -23,5 +22,7 @@
     "mongoose": "^6.7.5",
     "nodemon": "^2.0.20",
     "socket.io": "^4.5.4"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }

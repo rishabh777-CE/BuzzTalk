@@ -8,7 +8,6 @@ router.post("/create-new-chat", authMiddleware, async (req, res) => {
   try {
     const newChat = new Chat(req.body);
     const savedChat = await newChat.save();
-
     // populate members and last message in saved chat
     await savedChat.populate("members");
     res.send({

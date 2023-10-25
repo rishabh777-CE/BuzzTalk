@@ -47,14 +47,14 @@ function UsersList({ searchKey, socket, onlineUsers }) {
     // if search key is empty then return all chats else return filtered chats and users
     try {
       if (searchKey === "") {
-        return allChats || [];
+        return allChats ;
       }
       return allUsers.filter(
         (user) =>
-          user.name.toLowerCase().includes(searchKey.toLowerCase()) || []
+          user.name.toLowerCase().includes(searchKey.toLowerCase())
       );
     } catch (error) {
-      return [];
+      return ;
     }
   };
 

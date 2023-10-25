@@ -37,7 +37,7 @@ function ChatArea({ socket }) {
         createdAt: moment().format("DD-MM-YYYY hh:mm:ss"),
         read: false,
       });
-
+      if(!message.text) return toast.success("Enter a message");
       // send message to server to save in db
       const response = await SendMessage(message);
 
@@ -316,10 +316,18 @@ function ChatArea({ socket }) {
               sender: user._id,
             });
           }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault(); // Prevents the default Enter key behavior (new line)
+              sendNewMessage("");
+            }
+          }}
+        
         />
         <button
           className="bg-primary text-white py-1 px-5 rounded h-max"
           onClick={() => sendNewMessage("")}
+          
         >
           <i className="ri-send-plane-2-line text-white"></i>
         </button>

@@ -1,18 +1,22 @@
 const express = require("express");
+const cors = require("cors")
 require("dotenv").config();
 const app = express();
 const dbConfig = require("./config/dbConfig");
 const port = process.env.PORT || 5000;
-
 const usersRoute = require("./routes/usersRoute");
 const chatsRoute = require("./routes/chatsRoute");
 const messagesRoute = require("./routes/messagesRoute");
+
+app.use(cors({
+  origin: "http://localhost:3000",
+}))//backend ka origin 
 
 app.use(
   express.json({
     limit: "50mb",
   })
-);
+);  
 
 const server = require("http").createServer(app);
 
@@ -79,6 +83,9 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
   });
 }
+app.get('/',(req,res)=>{
+  res.send('helloworld')
+})
 
 
 server.listen(port, () => console.log(`Server running on port ${port}`));
