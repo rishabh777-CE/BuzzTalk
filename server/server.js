@@ -8,9 +8,7 @@ const usersRoute = require("./routes/usersRoute");
 const chatsRoute = require("./routes/chatsRoute");
 const messagesRoute = require("./routes/messagesRoute");
 
-app.use(cors({
-  origin: "http://localhost:3000",
-}))//backend ka origin 
+app.use(cors())//backend ka origin 
 
 app.use(
   express.json({
@@ -22,7 +20,7 @@ const server = require("http").createServer(app);
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
